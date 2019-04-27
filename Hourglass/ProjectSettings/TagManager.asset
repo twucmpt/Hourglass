@@ -6,6 +6,7 @@ TagManager:
   tags:
   - LevelManager
   - Exit
+  - Manager
   layers:
   - Default
   - TransparentFX

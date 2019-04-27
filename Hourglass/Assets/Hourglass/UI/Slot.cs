@@ -12,6 +12,9 @@ namespace Hourglass.UI
     public class Slot : MonoBehaviour
     {
 
+        private static Sprite active;
+        private static Sprite inactive;
+
         private Character character;
         private String key;
         private int id;
@@ -27,7 +30,9 @@ namespace Hourglass.UI
 
         void Start()
         {
-            DisplayItem();
+            active = Resources.Load<Sprite>("Images/UI/png/quickslot_selected");
+            inactive = Resources.Load<Sprite>("Images/UI/png/quickslot");
+            UpdateSlot();
         }
 
         public void SetItem(Item item)
@@ -49,9 +54,27 @@ namespace Hourglass.UI
             }
         }
 
+        internal void SetActive(bool active)
+        {
+            if (active) {
+                GetComponent<Image>().sprite = Slot.active;
+            }
+            else
+            {
+                GetComponent<Image>().sprite = Slot.inactive;
+            }
+        }
+
         public void UpdateSlot()
         {
-            item = character.GetItem(id);
+            try
+            {
+                item = character.GetItem(id);
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                item = null;
+            }
             DisplayItem();
         }
     }

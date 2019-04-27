@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Hourglass/Scenes/Levels/Level1.unity
     guid: ca105a608e8434b46ae66bc222f04ab1
+  - enabled: 1
+    path: Assets/Hourglass/Scenes/Levels/Shop1.unity
+    guid: 8452e11aa49b8524bb9f7f44112d7301
   m_configObjects: {}

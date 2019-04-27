@@ -8,21 +8,20 @@ namespace Hourglass.UI
     public class Quickslot : MonoBehaviour
     {
 
-        public int numQuickslots = 5;
         public GameObject slot;
 
         private GameObject[] slots;
-        private Character character;
+        private Player player;
 
         void Awake()
         {
-            character = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-            slots = new GameObject[numQuickslots];
-            for (int i = 0; i < numQuickslots; i++)
+            slots = new GameObject[player.boundKeys.Length];
+            for (int i = 0; i < slots.Length; i++)
             {
                 GameObject slotObject = Instantiate(slot, transform);
-                slotObject.GetComponent<Slot>().Setup(character,i,(i+1).ToString());
+                slotObject.GetComponent<Slot>().Setup(player, i, player.boundKeys[i]);
                 slots[i] = slotObject;
 
             }
@@ -30,9 +29,24 @@ namespace Hourglass.UI
 
         public void UpdateSlots()
         {
-            for (int i = 0; i < numQuickslots; i++)
+            for (int i = 0; i < slots.Length; i++)
             {
                 slots[i].GetComponent<Slot>().UpdateSlot();
+            }
+        }
+
+        public void SetActive(int id)
+        {
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (i == id)
+                {
+                    slots[i].GetComponent<Slot>().SetActive(true);
+                }
+                else
+                {
+                    slots[i].GetComponent<Slot>().SetActive(false);
+                }
             }
         }
 

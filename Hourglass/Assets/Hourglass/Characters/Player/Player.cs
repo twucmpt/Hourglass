@@ -4,20 +4,26 @@ using System;
 using UnityEngine;
 using Hourglass.Items;
 using Hourglass.Scenes;
+using Hourglass.UI;
 
 namespace Hourglass.Characters
 {
     public class Player : Character
     {
+
+        private Manager manager;
+
         public static Player user;
 
         public int itemLimit = 5;
-        public string[] boundKeys = { "z", "x", "c", "v", "b" };
+        public string[] boundKeys = { "1", "2", "3", "4", "5" };
         private int selectedItem = 0;
+        private int activeSlot = -1;
 
         protected new void Awake()
         {
             base.Awake();
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
         }
 
         protected void Start()
@@ -35,6 +41,18 @@ namespace Hourglass.Characters
                 UseItem(true);
             if (Input.GetMouseButtonDown(1))
                 UseItem(false);
+
+            for(int i = 0; i < boundKeys.Length; i++)
+            {
+                if (Input.GetKeyDown(boundKeys[i]))
+                {
+                    if (activeSlot != i)
+                    {
+                        activeSlot = i;
+                        manager.uiManager.quickslot.SetActive(activeSlot);
+                    }
+                }
+            }
 
         }
 

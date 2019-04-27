@@ -15,6 +15,7 @@ namespace Hourglass.Characters
 
         private float sand = 0;
         private bool alive = true;
+        public bool timer;
         protected List<Item> items = new List<Item>();
 
         protected void Awake()
@@ -27,10 +28,13 @@ namespace Hourglass.Characters
         {
             if (alive)
             {
-                ReduceTime();
-                if (sand <= 0)
+                if (timer)
                 {
-                    Die();
+                    ReduceTime();
+                    if (sand <= 0)
+                    {
+                        Die();
+                    }
                 }
             }
         }

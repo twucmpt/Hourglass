@@ -14,7 +14,7 @@ namespace Hourglass
         "Level1",
         "Shop1"
         };
-        private static int currentLevel = 0;
+        private static int currentLevel = -1;
 
 
         public static void NextLevel()
@@ -30,4 +30,5 @@ namespace Hourglass
             }
         }
     }
+
 }

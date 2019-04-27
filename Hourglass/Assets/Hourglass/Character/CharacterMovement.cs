@@ -11,6 +11,8 @@ public class CharacterMovement : PhysicsObject
     public float maxAirSpeed = 3;
     private List<Item> items = new List<Item>();
     public float jumpTakeOffSpeed = 7;
+    public bool facingRight = true;
+    public float flipSensitivity = 0.01f;
 
     private float move;
 
@@ -64,15 +66,23 @@ public class CharacterMovement : PhysicsObject
 
         move.x = this.move;
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
+        if (move.x > flipSensitivity)
         {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            spriteRenderer.flipX = !facingRight;
+        }
+        else if (move.x < -flipSensitivity)
+        {
+            spriteRenderer.flipX = facingRight;
         }
 
         animator.SetBool("Grounded", grounded);
         animator.SetFloat("Speed", Mathf.Abs(velocity.x) / maxSpeed);
 
         targetVelocity = move * maxSpeed;
+    }
+
+    internal bool IsGrounded()
+    {
+        return grounded;
     }
 }

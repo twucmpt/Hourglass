@@ -81,5 +81,10 @@ public class Character : MonoBehaviour
         return characterController.GetVelocity();
     }
 
+    public bool IsGrounded()
+    {
+        return characterController.IsGrounded();
+    }
+
 
 }

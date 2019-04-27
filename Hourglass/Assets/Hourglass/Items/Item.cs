@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Hourglass.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Items
+namespace Hourglass.Items
 {
     abstract class Item
     {
-        PlayerController player;
+        Player player;
 
         public static double Price;
 
-        public Item(PlayerController user) {
+        public Item(Player user) {
             player = user;
         }
 

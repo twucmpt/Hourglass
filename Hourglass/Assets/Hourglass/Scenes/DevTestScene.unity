@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 369261949}
   - component: {fileID: 369261948}
   - component: {fileID: 369261953}
-  - component: {fileID: 369261955}
+  - component: {fileID: 369261954}
   - component: {fileID: 369261950}
   m_Layer: 0
   m_Name: Knight
@@ -271,11 +271,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 369261947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91bb6ada5d313b4ba0adc9cfa381da4, type: 3}
+  m_Script: {fileID: 11500000, guid: 57c3a4abcd6a24d24b27edd1648a44d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 369261955}
-  initialSand: 600
+  minGroundNormalY: 0.65
+  gravityModifier: 1
+  maxLandSpeed: 7
+  maxAirSpeed: 3
+  jumpTakeOffSpeed: 7
+  facingRight: 1
+  flipSensitivity: 0.01
 --- !u!212 &369261951
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -331,12 +336,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369261947}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3480611, y: 0.15393735, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.508651, y: -1.491884, z: 1509.6991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 254346781}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1628736748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &369261953
@@ -358,7 +363,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &369261955
+--- !u!114 &369261954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,14 +372,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 369261947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c3a4abcd6a24d24b27edd1648a44d9, type: 3}
+  m_Script: {fileID: 11500000, guid: c91bb6ada5d313b4ba0adc9cfa381da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  maxLandSpeed: 7
-  maxAirSpeed: 4
-  jumpTakeOffSpeed: 7
+  controller: {fileID: 369261950}
+  initialSand: 600
 --- !u!1 &473533150
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +390,7 @@ GameObject:
   - component: {fileID: 473533153}
   - component: {fileID: 473533152}
   m_Layer: 5
-  m_Name: SandCount
+  m_Name: Sand Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -425,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac4c7a110464c74a81e74501fc0f99c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 369261950}
+  player: {fileID: 369261954}
 --- !u!114 &473533153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,7 +483,7 @@ GameObject:
   - component: {fileID: 702054804}
   - component: {fileID: 702054803}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +562,7 @@ RectTransform:
   m_Children:
   - {fileID: 473533151}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2108,6 +2110,38 @@ TilemapCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
+--- !u!1 &1628736747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628736748}
+  m_Layer: 0
+  m_Name: Game World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628736748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628736747}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1605899, y: 1.6458213, z: -1509.6991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2057054708}
+  - {fileID: 369261952}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2057054706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,7 +2153,7 @@ GameObject:
   - component: {fileID: 2057054708}
   - component: {fileID: 2057054707}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2144,12 +2178,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057054706}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.1605899, y: -1.6458213, z: 1509.6991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 844831467}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1628736748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065870842
@@ -2216,5 +2250,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

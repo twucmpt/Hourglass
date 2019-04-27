@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character
+namespace Hourglass.Characters
 {
+    public class Player : Character
+    {
 
+    }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Hourglass.Characters;
+
 public class SandCounter : MonoBehaviour
 {
 

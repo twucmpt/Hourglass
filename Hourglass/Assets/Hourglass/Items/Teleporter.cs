@@ -4,15 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assets.Scripts.Items
+using Hourglass.Characters;
+
+namespace Hourglass.Items
 {
     class Teleporter : Item
     {
-        PlayerController player;
+        Player player;
 
         new public static double Price = 25.5;
 
-        public Teleporter(PlayerController user) : base(user) { }
+        public Teleporter(Player user) : base(user) { }
 
         public override void UsePrimary()
         {

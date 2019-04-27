@@ -15,8 +15,7 @@ namespace Hourglass.Characters
 
         private float sand = 0;
         private bool alive = true;
-        private List<Item> items = new List<Item>();
-
+        protected List<Item> items = new List<Item>();
 
         void Awake()
         {

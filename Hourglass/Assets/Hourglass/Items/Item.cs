@@ -10,14 +10,14 @@ namespace Hourglass.Items
 {
     public abstract class Item
     {
-        Player player;
+        Character character;
 
         protected static Sprite sprite;
 
         public static double Price;
 
-        public Item(Player user) {
-            player = user;
+        public Item(Character c) {
+            character = c;
         }
 
         public Sprite GetSprite()

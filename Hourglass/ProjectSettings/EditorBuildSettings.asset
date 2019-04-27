@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Hourglass/Scenes/StartScene.unity
     guid: bfdb7cf1bdd8de1449f93e9ce48172dc
   - enabled: 1
-    path: Assets/Hourglass/Scenes/DevTestScene.unity
+    path: Assets/Hourglass/Scenes/Levels/Level1.unity
     guid: ca105a608e8434b46ae66bc222f04ab1
   m_configObjects: {}

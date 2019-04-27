@@ -18,7 +18,6 @@ namespace Hourglass.Characters
         protected new void Awake()
         {
             base.Awake();
-            UnityEngine.Object.DontDestroyOnLoad(gameObject);
         }
 
         protected void Start()

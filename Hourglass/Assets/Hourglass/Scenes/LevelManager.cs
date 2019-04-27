@@ -5,28 +5,15 @@ using UnityEngine;
 
 namespace Hourglass.Scenes
 {
+    //Handles any setup at the beginning of a new level
     public class LevelManager : MonoBehaviour
     {
-
-        public string nextLevel;
-
         private void Start()
         {
+            //Starts the player at this object's location
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetLocation(new Vector2(transform.position.x, transform.position.y));
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SetVelocity(new Vector2(0, 0));
 
-        }
-
-        public void NextLevel()
-        {
-            if(nextLevel != null)
-            {
-                SceneManager.LoadScene(nextLevel);
-            }
-            else
-            {
-                Debug.Log("Error. No next scene defined in Level Manager.");
-            }
         }
     }
 }

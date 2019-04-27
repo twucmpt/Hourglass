@@ -1,4 +1,5 @@
-﻿using Hourglass.Scenes;
+﻿using Hourglass;
+using Hourglass.Scenes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class Exit : MonoBehaviour
             }
             else
             {
-                levelManager.GetComponent<LevelManager>().NextLevel();
+                GameManager.NextLevel();
             }
         }
     }

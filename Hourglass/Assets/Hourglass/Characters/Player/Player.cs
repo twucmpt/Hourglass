@@ -29,6 +29,8 @@ namespace Hourglass.Characters
         protected new void Update()
         {
             base.Update();
+            foreach (Item i in items)
+                i.Update();
 
             SelectItem();
             if (Input.GetMouseButtonDown(0))

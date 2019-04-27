@@ -4,17 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Hourglass.Items
 {
-    abstract class Item
+    public abstract class Item
     {
         Player player;
+
+        [SerializeField]
+        protected static Sprite sprite;
 
         public static double Price;
 
         public Item(Player user) {
             player = user;
+        }
+
+        public Sprite GetSprite()
+        {
+            return sprite;
         }
 
         public abstract void UsePrimary();

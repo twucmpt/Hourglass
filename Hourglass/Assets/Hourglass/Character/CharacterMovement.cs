@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Items;
 
 // Modified from https://unity3d.com/learn/tutorials/topics/2d-game-creation/scripting-gravity?playlist=17093
 
 public class CharacterMovement : PhysicsObject
 {
-
     public float maxLandSpeed = 7;
     public float maxAirSpeed = 3;
+    private List<Item> items = new List<Item>();
     public float jumpTakeOffSpeed = 7;
 
     private float move;

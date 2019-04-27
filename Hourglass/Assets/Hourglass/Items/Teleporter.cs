@@ -11,8 +11,6 @@ namespace Hourglass.Items
 {
     class Teleporter : Item
     {
-        Player player;
-
         new public static double Price = 25.5;
 
         public Teleporter(Player user) : base(0, user) { }
@@ -23,7 +21,7 @@ namespace Hourglass.Items
             {
                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                player.SetLocation(new Vector2(worldPoint.x, worldPoint.y));
+                character.SetLocation(new Vector2(worldPoint.x, worldPoint.y));
             }
             catch (Exception e)
             {

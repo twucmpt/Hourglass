@@ -213,11 +213,11 @@ GameObject:
   m_Component:
   - component: {fileID: 369261952}
   - component: {fileID: 369261951}
-  - component: {fileID: 369261950}
   - component: {fileID: 369261949}
   - component: {fileID: 369261948}
   - component: {fileID: 369261953}
   - component: {fileID: 369261955}
+  - component: {fileID: 369261950}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Untagged
@@ -271,14 +271,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 369261947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c3a4abcd6a24d24b27edd1648a44d9, type: 3}
+  m_Script: {fileID: 11500000, guid: c91bb6ada5d313b4ba0adc9cfa381da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGroundNormalY: 0.65
-  gravityModifier: 1
-  maxLandSpeed: 7
-  maxAirSpeed: 3
-  jumpTakeOffSpeed: 7
+  characterController: {fileID: 369261955}
+  initialSand: 600
 --- !u!212 &369261951
 SpriteRenderer:
   m_ObjectHideFlags: 0

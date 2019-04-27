@@ -30,6 +30,11 @@ public class CharacterMovement : PhysicsObject
         velocity = v;
     }
 
+    public Vector2 GetVelocity()
+    {
+        return velocity;
+    }
+
     public void Jump()
     {
         if (grounded)
@@ -43,7 +48,7 @@ public class CharacterMovement : PhysicsObject
         move = value;
     }
 
-    public void UpdateVelocity()
+    protected void UpdateVelocity()
     {
         float maxSpeed = 0;
         if (grounded)

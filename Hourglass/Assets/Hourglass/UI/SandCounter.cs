@@ -4,22 +4,25 @@ using UnityEngine;
 
 using Hourglass.Characters;
 
-public class SandCounter : MonoBehaviour
+namespace Hourglass.UI
 {
-
-    private UnityEngine.UI.Text text;
-    public Player player;
-
-    void Awake()
+    public class SandCounter : MonoBehaviour
     {
-        text = GetComponent<UnityEngine.UI.Text>();
+
+        private UnityEngine.UI.Text text;
+        public Player player;
+
+        void Awake()
+        {
+            text = GetComponent<UnityEngine.UI.Text>();
+        }
+
+        void Update()
+        {
+            text.text = player.GetSand().ToString();
+        }
+
+
+
     }
-
-    void Update()
-    {
-        text.text = player.GetSand().ToString();
-    }
-
-
-
 }

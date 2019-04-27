@@ -10,7 +10,7 @@ namespace Hourglass.Items
 {
     public abstract class Item
     {
-        Character character;
+        protected Character character;
 
         private readonly int spriteId;
 

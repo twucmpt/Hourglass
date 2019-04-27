@@ -8,13 +8,16 @@ namespace Hourglass.Characters
 {
     public class Player : Character
     {
+        public static Player user;
+
         public int itemLimit = 5;
         public string[] boundKeys = { "z", "x", "c", "v", "b" };
         private int selectedItem = 0;
 
         protected void Start()
         {
-            items.Add(new Teleporter(this));
+            user = GetComponent<Player>();
+            items.Add(new Teleporter(user));
         }
 
         protected new void Update()

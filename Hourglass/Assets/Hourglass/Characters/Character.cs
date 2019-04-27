@@ -17,12 +17,12 @@ namespace Hourglass.Characters
         private bool alive = true;
         protected List<Item> items = new List<Item>();
 
-        void Awake()
+        protected void Awake()
         {
             sand = initialSand;
         }
 
-        private void Update()
+        protected void Update()
         {
             if (alive)
             {

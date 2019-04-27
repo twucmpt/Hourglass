@@ -10,7 +10,7 @@ namespace Hourglass.UI
     {
 
         private UnityEngine.UI.Text text;
-        public Player player;
+        public Character character;
 
         void Awake()
         {
@@ -19,7 +19,7 @@ namespace Hourglass.UI
 
         void Update()
         {
-            text.text = player.GetSand().ToString();
+            text.text = character.GetSand().ToString();
         }
 
 

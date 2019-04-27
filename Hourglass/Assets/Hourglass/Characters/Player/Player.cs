@@ -12,13 +12,15 @@ namespace Hourglass.Characters
         public string[] boundKeys = { "z", "x", "c", "v", "b" };
         private int selectedItem = 0;
 
-        public void Awake()
+        protected void Start()
         {
             items.Add(new Teleporter(this));
         }
 
-        public void Update()
+        protected new void Update()
         {
+            base.Update();
+
             SelectItem();
             if (Input.GetMouseButtonDown(0))
                 UseItem(true);

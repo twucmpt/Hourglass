@@ -24,6 +24,12 @@ public class CharacterMovement : PhysicsObject
         animator = GetComponent<Animator>();
     }
 
+    public void VelocityOverride(Vector2 v)
+    {
+        targetVelocity = v;
+        velocity = v;
+    }
+
     public void Jump()
     {
         if (grounded)

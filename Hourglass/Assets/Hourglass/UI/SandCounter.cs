@@ -10,10 +10,11 @@ namespace Hourglass.UI
     {
 
         private UnityEngine.UI.Text text;
-        public Character character;
+        public Player character;
 
         void Awake()
         {
+            character = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             text = GetComponent<UnityEngine.UI.Text>();
         }
 

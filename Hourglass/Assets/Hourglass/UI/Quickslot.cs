@@ -22,9 +22,17 @@ namespace Hourglass.UI
             for (int i = 0; i < numQuickslots; i++)
             {
                 GameObject slotObject = Instantiate(slot, transform);
-                slotObject.GetComponent<Slot>().Setup(character,(i+1).ToString());
+                slotObject.GetComponent<Slot>().Setup(character,i,(i+1).ToString());
                 slots[i] = slotObject;
 
+            }
+        }
+
+        public void UpdateSlots()
+        {
+            for (int i = 0; i < numQuickslots; i++)
+            {
+                slots[i].GetComponent<Slot>().UpdateSlot();
             }
         }
 

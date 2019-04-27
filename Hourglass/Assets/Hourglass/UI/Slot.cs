@@ -14,12 +14,14 @@ namespace Hourglass.UI
 
         private Character character;
         private String key;
+        private int id;
         private Item item;
 
-        public void Setup(Character character, String key)
+        public void Setup(Character character, int id, String key)
         {
             this.character = character;
             this.key = key;
+            this.id = id;
             transform.Find("Key").GetComponent<Text>().text = key;
         }
 
@@ -47,5 +49,10 @@ namespace Hourglass.UI
             }
         }
 
+        public void UpdateSlot()
+        {
+            item = character.GetItem(id);
+            DisplayItem();
+        }
     }
 }

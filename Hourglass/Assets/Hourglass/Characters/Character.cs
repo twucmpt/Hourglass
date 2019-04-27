@@ -20,6 +20,7 @@ namespace Hourglass.Characters
         protected void Awake()
         {
             sand = initialSand;
+            controller = GetComponent<CharacterController>();
         }
 
         protected void Update()
@@ -91,6 +92,10 @@ namespace Hourglass.Characters
             return controller.IsGrounded();
         }
 
+        public Item GetItem(int id)
+        {
+            return items[id];
+        }
 
     }
 }

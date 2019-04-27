@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Hourglass.Items;
+using Hourglass.Scenes;
 
 namespace Hourglass.Characters
 {
@@ -13,6 +14,12 @@ namespace Hourglass.Characters
         public int itemLimit = 5;
         public string[] boundKeys = { "z", "x", "c", "v", "b" };
         private int selectedItem = 0;
+
+        protected new void Awake()
+        {
+            base.Awake();
+            UnityEngine.Object.DontDestroyOnLoad(gameObject);
+        }
 
         protected void Start()
         {
@@ -31,6 +38,7 @@ namespace Hourglass.Characters
                 UseItem(false);
 
         }
+
 
         private void SelectItem()
         {

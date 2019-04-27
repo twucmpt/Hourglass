@@ -8,15 +8,23 @@ using UnityEngine.UI;
 
 namespace Hourglass.UI
 {
+
     public class Slot : MonoBehaviour
     {
-        public Character character;
 
+        private Character character;
+        private String key;
         private Item item;
+
+        public void Setup(Character character, String key)
+        {
+            this.character = character;
+            this.key = key;
+            transform.Find("Key").GetComponent<Text>().text = key;
+        }
 
         void Start()
         {
-            item = new DebugItem(character);
             DisplayItem();
         }
 
@@ -38,5 +46,6 @@ namespace Hourglass.UI
                 transform.Find("Item").GetComponent<Image>().enabled = true;
             }
         }
+
     }
 }

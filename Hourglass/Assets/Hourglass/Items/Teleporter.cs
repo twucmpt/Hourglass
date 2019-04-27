@@ -15,7 +15,7 @@ namespace Hourglass.Items
 
         new public static double Price = 25.5;
 
-        public Teleporter(Player user) : base(user) { }
+        public Teleporter(Player user) : base(0, user) { }
 
         public override void UsePrimary()
         {

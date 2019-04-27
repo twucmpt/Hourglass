@@ -1,4 +1,5 @@
-﻿using Hourglass.Items;
+﻿using Hourglass.Characters;
+using Hourglass.Items;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,8 +10,15 @@ namespace Hourglass.UI
 {
     public class Slot : MonoBehaviour
     {
+        public Character character;
 
         private Item item;
+
+        void Start()
+        {
+            item = new DebugItem(character);
+            DisplayItem();
+        }
 
         public void SetItem(Item item)
         {
@@ -22,11 +30,12 @@ namespace Hourglass.UI
         {
             if(item == null)
             {
-
+                transform.Find("Item").GetComponent<Image>().enabled = false;
             }
             else
             {
                 transform.Find("Item").GetComponent<Image>().sprite = item.GetSprite();
+                transform.Find("Item").GetComponent<Image>().enabled = true;
             }
         }
     }

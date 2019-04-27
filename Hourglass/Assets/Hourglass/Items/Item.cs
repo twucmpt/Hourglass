@@ -12,20 +12,26 @@ namespace Hourglass.Items
     {
         Character character;
 
-        protected static Sprite sprite;
+        private readonly int spriteId;
 
         public static double Price;
 
-        public Item(Character c) {
+        public Item(int id, Character c) {
+            spriteId = id;
             character = c;
         }
 
         public Sprite GetSprite()
         {
-            return sprite;
+            return sprites[spriteId];
         }
 
         public abstract void UsePrimary();
         public abstract void UseSecondary();
+
+        public static readonly Sprite[] sprites = new Sprite[]
+        {
+            Resources.Load<Sprite>("Images/Items/Default/png/DefaultItem")
+        };
     }
 }

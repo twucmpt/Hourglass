@@ -8,9 +8,7 @@ namespace Hourglass.Items
     public class DebugItem : Item
     {
 
-        protected new Sprite sprite;
-
-        public DebugItem(Player user) : base(user)
+        public DebugItem(Character user) : base(0, user)
         {
         }
 

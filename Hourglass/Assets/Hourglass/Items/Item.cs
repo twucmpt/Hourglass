@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Hourglass.Items
 {
-    abstract class Item
+    public abstract class Item
     {
-        Player player;
+        Character character;
 
         public static double Price;
 
-        public Item(Player user) {
-            player = user;
+        public Item(Character c) {
+            character = c;
         }
 
         public abstract void UsePrimary();

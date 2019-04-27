@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 
 using Hourglass.Characters;
 
@@ -18,7 +19,16 @@ namespace Hourglass.Items
 
         public override void UsePrimary()
         {
-            //must be filled in
+            try
+            {
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                player.SetLocation(new Vector2(worldPoint.x, worldPoint.y));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         // no secondary ability, do nothing

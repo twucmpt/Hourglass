@@ -12,7 +12,6 @@ namespace Hourglass.Items
     {
         Player player;
 
-        [SerializeField]
         protected static Sprite sprite;
 
         public static double Price;

@@ -12,14 +12,12 @@ namespace Hourglass.Items
     {
         protected Character character;
 
-        private readonly int spriteId;
+        private readonly int itemId;
         protected static double cooldown;
         private double cdtimer;
-    
-        public static double Price;
 
         public Item(int id, Character c) {
-            spriteId = id;
+            itemId = id;
             character = c;
         }
 
@@ -29,9 +27,9 @@ namespace Hourglass.Items
                 cdtimer -= Time.deltaTime;
         }
 
-        protected void StartCd(double cd)
+        protected void StartCd()
         {
-            cdtimer = cd;
+            cdtimer = cooldown;
         }
 
         protected double Cooldown()
@@ -41,15 +39,30 @@ namespace Hourglass.Items
 
         public Sprite GetSprite()
         {
-            return sprites[spriteId];
+            return sprites[itemId];
+        }
+
+        public float GetPrice()
+        {
+            return prices[itemId];
         }
 
         public abstract void UsePrimary();
         public abstract void UseSecondary();
 
+
+
+
         public static readonly Sprite[] sprites = new Sprite[]
         {
+            Resources.Load<Sprite>("Images/Items/Default/png/DefaultItem"),
             Resources.Load<Sprite>("Images/Items/Default/png/DefaultItem")
+        };
+
+        public static readonly float[] prices = new float[]
+        {
+            0,
+            25.5f
         };
     }
 }

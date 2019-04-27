@@ -14,7 +14,7 @@ namespace Hourglass.Items
         new public static double Price = 25.5;
         new protected static double cooldown = 14;
 
-        public Teleporter(Player user) : base(0, user) { }
+        public Teleporter(Player user) : base(1, user) { }
 
         public override void UsePrimary()
         {
@@ -26,14 +26,12 @@ namespace Hourglass.Items
 
                 character.SetLocation(new Vector2(worldPoint.x, worldPoint.y));
 
-
+                StartCd(cooldown);
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-            }
-
-            StartCd(cooldown);
+            }            
         }
 
         // no secondary ability, do nothing

@@ -29,9 +29,12 @@ namespace Hourglass.Characters
 
         private void SelectItem()
         {
-            for(int i = 0; i < boundKeys.Length; i++)
+            for (int i = 0; i < items.Count && i < boundKeys.Length; i++)
                 if (Input.GetKey(boundKeys[i]))
+                {
                     selectedItem = i;
+                    return;
+                }
         }
 
         public void GetItem(Item newItem)

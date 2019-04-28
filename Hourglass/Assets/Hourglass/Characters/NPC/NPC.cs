@@ -8,14 +8,9 @@ namespace Hourglass.Characters
     public class NPC : Character
     {
         private Character target;
-        protected Manager manager;
         public float sight = 5;
         public float interactionDistance = 0.5f;
 
-        protected void Start()
-        {
-            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
-        }
 
         protected new void Update()
         {

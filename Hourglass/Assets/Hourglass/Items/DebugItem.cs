@@ -8,18 +8,14 @@ namespace Hourglass.Items
     public class DebugItem : Item
     {
 
-        public DebugItem(Character user) : base(0, user)
-        {
-        }
+        public DebugItem(Character user) : base(0, user) {}
 
-        public override void UsePrimary()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void UsePrimary() {}
 
-        public override void UseSecondary()
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void UseSecondary() {}
+
+        public override void ActivatePassive() {}
+        public override void UsePassive() {}
+        public override void RevertPassive() {}
     }
 }

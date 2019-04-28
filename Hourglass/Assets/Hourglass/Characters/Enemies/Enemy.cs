@@ -7,9 +7,8 @@ namespace Hourglass.Characters
 {
     public class Enemy : NPC
     {
-        protected new void Start()
+        protected void Start()
         {
-            base.Start();
             Target(manager.player);
         }
 

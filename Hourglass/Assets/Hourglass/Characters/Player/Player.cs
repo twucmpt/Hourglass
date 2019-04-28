@@ -11,23 +11,22 @@ namespace Hourglass.Characters
     public class Player : Character
     {
 
-        private Manager manager;
 
         public static Player user;
 
         public string[] boundKeys = { "1", "2", "3", "4", "5" };
-        private int activeSlot = -1;
 
         protected new void Awake()
         {
             base.Awake();
-            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
         }
 
         protected void Start()
         {
             user = GetComponent<Player>();
             items.Add(new Teleporter(user));
+            items.Add(new Glider(user));
+
         }
 
         protected new void Update()
@@ -50,18 +49,20 @@ namespace Hourglass.Characters
             {
                 if (Input.GetKeyDown(boundKeys[i]))
                 {
-                    if (activeSlot != i)
-                    {
-                        activeSlot = i;
-                        manager.uiManager.quickslot.SetActive(activeSlot);
-                    }
+                    Equip(i);
+                    manager.uiManager.quickslot.SetActive(activeSlot);
                 }
             }
 
-            if (Input.GetMouseButtonDown(0))
-                UseItem(true);
-            if (Input.GetMouseButtonDown(1))
-                UseItem(false);
+            if (activeSlot > -1)
+            {
+                if (Input.GetMouseButtonDown(0))
+                    UseItem(true);
+                if (Input.GetMouseButtonDown(1))
+                    UseItem(false);
+                
+            }
+
 
         }
 
@@ -73,24 +74,7 @@ namespace Hourglass.Characters
                 items.RemoveAt(0);
         }
 
-        private void UseItem(bool primary)
-        {
-            try
-            {
-                Item selected = items[activeSlot];
-                if (selected == null)
-                    return;
 
-                if (primary)
-                    selected.UsePrimary();
-                else
-                    selected.UseSecondary();
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-
-            }
-
-        }
+        
     }
 }

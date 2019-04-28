@@ -35,7 +35,11 @@ namespace Hourglass.Items
         }
 
         // no secondary ability, do nothing
-        public override void UseSecondary()
-        { }
+        public override void UseSecondary() {}
+
+        public override void ActivatePassive() {}
+        public override void UsePassive() {}
+        public override void RevertPassive() {}
+
     }
 }

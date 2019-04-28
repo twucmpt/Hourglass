@@ -11,6 +11,8 @@ namespace Hourglass.Physics
 
         public float minGroundNormalY = .65f;
         public float gravityModifier = 1f;
+        public float fallModifier = 1f;
+        public float horizontalModifier = 1f;
 
         public bool ragdoll = false;
 
@@ -65,11 +67,15 @@ namespace Hourglass.Physics
 
             Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 
-            Vector2 move = moveAlongGround * deltaPosition.x;
+            Vector2 move = moveAlongGround * deltaPosition.x * horizontalModifier;
 
             Movement(move, false);
 
             move = Vector2.up * deltaPosition.y;
+            if(deltaPosition.y < 0)
+            {
+                move = move * fallModifier;
+            }
 
             Movement(move, true);
         }

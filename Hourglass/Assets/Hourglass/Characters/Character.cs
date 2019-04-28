@@ -21,6 +21,8 @@ namespace Hourglass.Characters
         public bool timer;
         protected List<Item> items = new List<Item>();
         private SpriteRenderer sr;
+        protected int activeSlot = -1;
+        public Manager manager;
 
         private bool invulnerable = false;
 
@@ -31,6 +33,8 @@ namespace Hourglass.Characters
             sand = initialSand;
             controller = GetComponent<CharacterController>();
             sr = GetComponent<SpriteRenderer>();
+            manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
+
         }
 
         protected void Update()
@@ -50,6 +54,8 @@ namespace Hourglass.Characters
             {
                 Flicker();
             }
+
+            UsePassive();
         }
 
         protected virtual void CountDown()
@@ -122,6 +128,71 @@ namespace Hourglass.Characters
             {
                 sr.enabled = true;
                 invulnerable = false;
+            }
+        }
+
+        protected void Equip(int idx)
+        {
+            if (activeSlot != idx)
+            {
+                RevertPassive();
+                activeSlot = idx;
+                ActivatePassive();
+            }
+        }
+
+        protected void UseItem(bool primary)
+        {
+            try
+            {
+                Item selected = items[activeSlot];
+                if (selected == null)
+                    return;
+
+                if (primary)
+                    selected.UsePrimary();
+                else
+                    selected.UseSecondary();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Debug.Log("Slot " + activeSlot + " is out of item list range.");
+            }
+        }
+
+        protected void UsePassive()
+        {
+            try
+            {
+                items[activeSlot].UsePassive();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                //Debug.Log("Slot " + activeSlot + " is out of item list range.");
+            }
+        }
+
+        protected void RevertPassive()
+        {
+            try
+            {
+                items[activeSlot].RevertPassive();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Debug.Log("Slot " + activeSlot + " is out of item list range.");
+            }
+        }
+
+        protected void ActivatePassive()
+        {
+            try
+            {
+                items[activeSlot].ActivatePassive();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Debug.Log("Slot " + activeSlot + " is out of item list range.");
             }
         }
 

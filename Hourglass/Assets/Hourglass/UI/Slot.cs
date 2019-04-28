@@ -53,7 +53,7 @@ namespace Hourglass.UI
             }
             else
             {
-                image.sprite = item.GetSprite();
+                image.sprite = item.Sprite;
                 image.enabled = true;
             }
         }
@@ -76,7 +76,7 @@ namespace Hourglass.UI
                 item = character.GetItem(id);
                 if(item.Cooldown() > 0)
                 {
-                    float cooldownPercent = (item.cooldown - item.Cooldown()) / (item.cooldown);
+                    float cooldownPercent = (item.CooldownCost - item.Cooldown()) / (item.CooldownCost);
                     cooldownPercent = (maxTransparency - minTransparency) * cooldownPercent + minTransparency;
 
                     var tempColor = image.color;

@@ -13,19 +13,12 @@ namespace Hourglass.Items
         protected Character character;
 
         private readonly int itemId;
-        private readonly Sprite sprite;
-        private readonly float price;
-        public readonly float cooldown;
 
         private float cdtimer;
     
         public Item(int id, Character c) {
             itemId = id;
             character = c;
-
-            sprite = ItemList.items[itemId].sprite;
-            price = ItemList.items[itemId].price;
-            cooldown = ItemList.items[itemId].cooldown;
 
         }
 
@@ -37,7 +30,7 @@ namespace Hourglass.Items
 
         protected void StartCooldown()
         {
-            cdtimer = cooldown;
+            cdtimer = CooldownCost;
         }
 
         public float Cooldown()
@@ -45,9 +38,28 @@ namespace Hourglass.Items
             return cdtimer;
         }
 
-        public Sprite GetSprite()
+        public float CooldownCost
         {
-            return sprite;
+            get
+            {
+                return ItemList.items[itemId].cooldown;
+            }
+        }
+
+        public float Price
+        {
+            get
+            {
+                return ItemList.items[itemId].price;
+            }
+        }
+
+        public Sprite Sprite
+        {
+            get
+            {
+                return ItemList.items[itemId].sprite;
+            }
         }
 
         public abstract void UsePrimary();

@@ -12,7 +12,7 @@ public class ItemList : MonoBehaviour
         public readonly float price;
         public readonly float cooldown;
 
-        internal ItemProperties(string name, string sprite, float price, float cooldown)
+        internal ItemProperties(string name, float price, float cooldown, string sprite)
         {
             this.name = name;
             this.sprite = Resources.Load<Sprite>(sprite);
@@ -23,8 +23,9 @@ public class ItemList : MonoBehaviour
     }
 
     public readonly static ItemProperties[] items = new ItemProperties[] {
-        new ItemProperties("DebugTool","Images/Items/Default/png/DefaultItem",0,0),
-        new ItemProperties("Teleporter","Images/Items/Default/png/DefaultItem",25.5f,14)
+        //                    Name        Price  Cooldown               Sprite                
+        new ItemProperties("DebugTool",     0,      0,  "Images/Items/Default/png/DefaultItem"),
+        new ItemProperties("Teleporter",    25.5f,  14, "Images/Items/Default/png/DefaultItem")
     };
 
 

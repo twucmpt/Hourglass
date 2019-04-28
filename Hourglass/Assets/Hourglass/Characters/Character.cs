@@ -44,7 +44,7 @@ namespace Hourglass.Characters
             {
                 attackCooldown -= Time.deltaTime;
             }
-            if (flicker > 0)
+            if (flicker != 0)
             {
                 Flicker();
             }
@@ -109,10 +109,14 @@ namespace Hourglass.Characters
             flicker -= Time.deltaTime;
             sr.enabled = !sr.enabled;
 
-            if (flicker <= 0)
+            if (flicker <= 0 && IsGrounded())
             {
                 sr.enabled = true;
                 flicker = 0;
+            }
+            if(flicker == 0)
+            {
+                sr.enabled = true;
             }
         }
 
@@ -151,8 +155,8 @@ namespace Hourglass.Characters
             if (attackCooldown <= 0)
             {
                 attackCooldown = attackSpeed;
-                target.Damage(baseDamage);
                 target.KnockBack(baseDamage, transform.position);
+                target.Damage(baseDamage);
             }
         }
 

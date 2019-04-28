@@ -189,7 +189,7 @@ namespace Hourglass.Characters
         {
             try
             {
-                items[activeSlot].RevertPassive();
+                items[activeSlot].OnDequip();
             }
             catch (ArgumentOutOfRangeException)
             {
@@ -201,7 +201,7 @@ namespace Hourglass.Characters
         {
             try
             {
-                items[activeSlot].ActivatePassive();
+                items[activeSlot].OnEquip();
             }
             catch (ArgumentOutOfRangeException)
             {

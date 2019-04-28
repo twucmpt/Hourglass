@@ -35,13 +35,14 @@ namespace Hourglass.Items
 
         public override void UseSecondary() {}
 
-        public override void ActivatePassive() {
-            projSrc = character.projectileOutput.AddComponent<ProjectileSource>();
+        public override void OnEquip() {
+            projSrc = character.gameObject.AddComponent<ProjectileSource>();
+            projSrc.output = character.projectileOutput;
             projSrc.colliders = new Collider2D[]{ character.GetComponent<Collider2D>()};
             projSrc.projectileObject = Resources.Load<GameObject>("Prefabs/Bullet/Bullet");
         }
         public override void UsePassive() {}
-        public override void RevertPassive() {
+        public override void OnDequip() {
             UnityEngine.Object.Destroy(projSrc);
         }
     }

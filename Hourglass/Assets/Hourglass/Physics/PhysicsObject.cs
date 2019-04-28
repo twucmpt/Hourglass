@@ -46,7 +46,10 @@ namespace Hourglass.Physics
         void Update()
         {
             targetVelocity = Vector2.zero;
-            ComputeVelocity();
+            if (!ragdoll)
+            {
+                ComputeVelocity();
+            }
         }
 
         protected virtual void ComputeVelocity()
@@ -65,6 +68,11 @@ namespace Hourglass.Physics
             //ragdoll = true; //Can't control motion in air
 
             Vector2 deltaPosition = velocity * Time.deltaTime;
+
+            if (tag == "Player")
+            {
+                //Debug.Log(gravityModifier + " "+ velocity + " " + deltaPosition.x + " " + deltaPosition.y);
+            }
 
             Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
 

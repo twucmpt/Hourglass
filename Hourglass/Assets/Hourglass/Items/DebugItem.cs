@@ -14,8 +14,8 @@ namespace Hourglass.Items
 
         public override void UseSecondary() {}
 
-        public override void ActivatePassive() {}
+        public override void OnEquip() {}
         public override void UsePassive() {}
-        public override void RevertPassive() {}
+        public override void OnDequip() {}
     }
 }

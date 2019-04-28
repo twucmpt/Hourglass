@@ -27,6 +27,7 @@ namespace Hourglass.Characters
             items.Add(new Teleporter(user));
             items.Add(new Glider(user));
             items.Add(new Pistol(user));
+            items.Add(new GrappleHook(user));
 
         }
 

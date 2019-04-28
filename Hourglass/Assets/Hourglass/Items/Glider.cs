@@ -29,7 +29,7 @@ namespace Hourglass.Items
             character.controller.horizontalModifier = character.controller.horizontalModifier / horizontalModifier;
         }
 
-        public override void ActivatePassive() {
+        public override void OnEquip() {
             character.controller.fallModifier = character.controller.fallModifier * fallModifier;
 
         }
@@ -44,7 +44,7 @@ namespace Hourglass.Items
                 ActivateHorizontal();
             }
         }
-        public override void RevertPassive()
+        public override void OnDequip()
         {
             character.controller.fallModifier = character.controller.fallModifier / fallModifier;
             if(horiztonalModified)

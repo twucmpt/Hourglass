@@ -9,7 +9,9 @@ public class ProjectileSource : MonoBehaviour
     public float speed = 1;
     public GameObject projectileObject;
 
+    public GameObject output;
     public Collider2D[] colliders;
+    private List<GameObject> projectiles = new List<GameObject>();
 
     public void Shoot(Vector3 direction)
     {
@@ -24,7 +26,7 @@ public class ProjectileSource : MonoBehaviour
     public void Shoot(Vector3 direction, float speed, int damage)
     {
         GameObject projectile = GameObject.Instantiate(projectileObject);
-        projectile.transform.position = transform.position;
+        projectile.transform.position = output.transform.position;
         if(colliders != null)
         {
             foreach(Collider2D c in colliders)
@@ -32,6 +34,31 @@ public class ProjectileSource : MonoBehaviour
                 Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), c);
             }
         }
-        projectile.GetComponent<Projectile>().Shoot(direction, speed, damage);
+        projectile.GetComponent<Projectile>().Shoot(direction, speed, damage, this);
+        projectiles.Add(projectile);
+    }
+
+    public void Disable()
+    {
+        foreach(GameObject proj in projectiles)
+        {
+            proj.GetComponent<Projectile>().Disable();
+        }
+    }
+
+    public void RemoveAllProjectiles()
+    {
+        while(projectiles.Count != 0)
+        {
+            GameObject proj = projectiles[0];
+            proj.GetComponent<Projectile>().Disable();
+            projectiles.RemoveAt(0);
+            Destroy(proj);
+        }
+    }
+
+    public void RemoveProjectile(GameObject o)
+    {
+        projectiles.Remove(o);
     }
 }

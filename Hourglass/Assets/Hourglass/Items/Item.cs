@@ -65,9 +65,9 @@ namespace Hourglass.Items
         public abstract void UsePrimary();
         public abstract void UseSecondary();
 
-        public abstract void ActivatePassive();
+        public abstract void OnEquip();
         public abstract void UsePassive();
-        public abstract void RevertPassive();
+        public abstract void OnDequip();
 
     }
 }

@@ -12,6 +12,8 @@ namespace Hourglass.Physics
         public float minGroundNormalY = .65f;
         public float gravityModifier = 1f;
 
+        public bool ragdoll = false;
+
         protected Vector2 targetVelocity;
         protected bool grounded;
         protected Vector2 groundNormal;
@@ -52,9 +54,12 @@ namespace Hourglass.Physics
         void FixedUpdate()
         {
             velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-            velocity.x = targetVelocity.x;
-
+            if (!ragdoll)
+            {
+                velocity.x = targetVelocity.x;
+            }
             grounded = false;
+            //ragdoll = true; //Can't control motion in air
 
             Vector2 deltaPosition = velocity * Time.deltaTime;
 
@@ -88,6 +93,7 @@ namespace Hourglass.Physics
                     if (currentNormal.y > minGroundNormalY)
                     {
                         grounded = true;
+                        ragdoll = false;
                         if (yMovement)
                         {
                             groundNormal = currentNormal;

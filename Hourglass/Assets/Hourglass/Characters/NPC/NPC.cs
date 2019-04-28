@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Hourglass.Characters
         private Character target;
         protected Manager manager;
         public float sight = 5;
+        public float interactionDistance = 0.5f;
 
         protected void Start()
         {
@@ -25,7 +27,17 @@ namespace Hourglass.Characters
                     controller.goToTarget = true;
                     controller.targetLoc = target.transform.position;
                 }
+                if (Vector2.Distance(target.transform.position, transform.position) < interactionDistance)
+                {
+                    Interact(target);
+                }
             }
+
+        }
+
+        protected virtual void Interact(Character target)
+        {
+            
         }
 
         public void Target(Character t)

@@ -14,6 +14,7 @@ namespace Hourglass.Characters
         public float minX, maxX, minY, maxY;
         public bool useXRange = false;
         public bool useYRange = false;
+        public float stopDistance = 0;
 
         //Wait
         public float waitTimeMax = 10;
@@ -203,6 +204,11 @@ namespace Hourglass.Characters
                 else
                 {
                     dir = -1;
+                }
+                //If close enough, stop
+                if (Vector2.Distance(targetLoc, transform.position) < stopDistance)
+                {
+                    dir = 0;
                 }
                 Move(dir);
 

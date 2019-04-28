@@ -156,6 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   initialSand: 600
+  baseDamage: 10
+  attackSpeed: 0.6
   timer: 0
   itemLimit: 5
   boundKeys:
@@ -178,8 +180,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  ragdoll: 0
   maxLandSpeed: 7
-  maxAirSpeed: 3
+  maxAirSpeed: 5
   jumpTakeOffSpeed: 7
   facingRight: 1
   flipSensitivity: 0.01

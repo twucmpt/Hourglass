@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,11 @@ namespace Hourglass.Characters
         {
             base.Start();
             Target(manager.player);
+        }
+
+        protected override void Interact(Character target)
+        {
+            Attack(target);
         }
     }
 }

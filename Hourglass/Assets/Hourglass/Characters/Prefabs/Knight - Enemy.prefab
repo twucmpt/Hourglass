@@ -154,8 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   initialSand: 600
+  baseDamage: 10
+  attackSpeed: 0.6
   timer: 0
   sight: 5
+  interactionDistance: 0.5
 --- !u!114 &1171663591709367750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minGroundNormalY: 0.65
   gravityModifier: 1
+  ragdoll: 0
   maxLandSpeed: 7
-  maxAirSpeed: 3
+  maxAirSpeed: 5
   jumpTakeOffSpeed: 7
   facingRight: 1
   flipSensitivity: 0.01
@@ -183,6 +187,7 @@ MonoBehaviour:
   maxY: 0
   useXRange: 0
   useYRange: 0
+  stopDistance: 0.5
   waitTimeMax: 10
   wanderTimeMax: 10
   state: 

@@ -12,16 +12,23 @@ namespace Hourglass.Characters
 
         public CharacterController controller;
         public int initialSand = 600;
+        public int baseDamage = 10;
+        public float attackSpeed = 0.6f;
 
+        private float attackCooldown = 0;
         private float sand = 0;
         private bool alive = true;
         public bool timer;
         protected List<Item> items = new List<Item>();
+        private SpriteRenderer sr;
+
+        private float flicker = 0;
 
         protected void Awake()
         {
             sand = initialSand;
             controller = GetComponent<CharacterController>();
+            sr = GetComponent<SpriteRenderer>();
         }
 
         protected void Update()
@@ -32,6 +39,14 @@ namespace Hourglass.Characters
                 {
                     CountDown();
                 }
+            }
+            if (attackCooldown > 0)
+            {
+                attackCooldown -= Time.deltaTime;
+            }
+            if (flicker > 0)
+            {
+                Flicker();
             }
         }
 
@@ -72,8 +87,33 @@ namespace Hourglass.Characters
 
         public void Damage(int damage)
         {
-            RemoveSand(damage);
-            //Play damage animation or something
+            if (flicker == 0)
+            {
+                RemoveSand(damage);
+                DamageResponse();
+            }
+        }
+
+        protected virtual void DamageResponse()
+        {
+            FlickerAnimation(0.8f);
+        }
+
+        private void FlickerAnimation(float time)
+        {
+            flicker = time;
+        }
+
+        private void Flicker()
+        {
+            flicker -= Time.deltaTime;
+            sr.enabled = !sr.enabled;
+
+            if (flicker <= 0)
+            {
+                sr.enabled = true;
+                flicker = 0;
+            }
         }
 
         public void SetLocation(Vector2 loc)
@@ -106,5 +146,39 @@ namespace Hourglass.Characters
             return items[id];
         }
 
+        protected virtual void Attack(Character target)
+        {
+            if (attackCooldown <= 0)
+            {
+                attackCooldown = attackSpeed;
+                target.Damage(baseDamage);
+                target.KnockBack(baseDamage, transform.position);
+            }
+        }
+
+        private void KnockBack(int baseDamage, Vector3 position)
+        {
+            if (flicker == 0)
+            {
+                controller.ragdoll = true;
+
+                float vertical = 4;
+                float horizontal = 12;
+
+
+
+                Vector3 knockbackDirection = Vector3.Normalize(new Vector3(transform.position.x - position.x, transform.position.y - position.y, 0));
+
+                Vector3 knockback = Vector3.Normalize(new Vector3(knockbackDirection.x, 0, 0));
+                knockback = new Vector3(knockback.x * horizontal, vertical, 0);
+
+                //Variant of knockback
+                //float mutltiplier = 6;
+                //float boost = 4;
+                //Vector3 knockback = new Vector3(knockbackDirection.x*mutltiplier, knockbackDirection.y*mutltiplier+boost, 0);
+
+                SetVelocity(knockback);
+            }
+        }
     }
 }

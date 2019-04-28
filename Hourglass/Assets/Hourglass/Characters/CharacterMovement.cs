@@ -16,6 +16,8 @@ namespace Hourglass.Characters
         public float flipSensitivity = 0.01f;
 
         private float move;
+        private int flipDelay = 20;
+        private int flipDelayCount = 0;
 
         private SpriteRenderer spriteRenderer;
         private Animator animator;
@@ -44,13 +46,26 @@ namespace Hourglass.Characters
 
             move.x = this.move;
 
-            if (move.x > flipSensitivity)
+            //Flip
+            if(flipDelayCount > 0)
             {
-                spriteRenderer.flipX = !facingRight;
+                flipDelayCount -= 1;
             }
-            else if (move.x < -flipSensitivity)
+            bool flipvalue = spriteRenderer.flipX;
+            if (flipDelayCount == 0)
             {
-                spriteRenderer.flipX = facingRight;
+                if (move.x > flipSensitivity)
+                {
+                    spriteRenderer.flipX = !facingRight;
+                }
+                else if (move.x < -flipSensitivity)
+                {
+                    spriteRenderer.flipX = facingRight;
+                }
+            }
+            if(flipvalue != spriteRenderer.flipX)
+            {
+                flipDelayCount = flipDelay;
             }
 
             animator.SetBool("Grounded", grounded);

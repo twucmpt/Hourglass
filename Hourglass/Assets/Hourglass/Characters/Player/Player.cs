@@ -15,7 +15,6 @@ namespace Hourglass.Characters
 
         public static Player user;
 
-        public int itemLimit = 5;
         public string[] boundKeys = { "1", "2", "3", "4", "5" };
         private int activeSlot = -1;
 
@@ -34,7 +33,7 @@ namespace Hourglass.Characters
         protected new void Update()
         {
             base.Update();
-            for (int i = 0; i < itemLimit; i++)
+            for (int i = 0; i < boundKeys.Length; i++)
             {
                 try
                 {
@@ -70,8 +69,8 @@ namespace Hourglass.Characters
         {
             items.Add(newItem);
 
-            while (items.Count > itemLimit)
-                items.RemoveAt(itemLimit);
+            while (items.Count > boundKeys.Length)
+                items.RemoveAt(boundKeys.Length);
         }
 
         private void UseItem(bool primary)

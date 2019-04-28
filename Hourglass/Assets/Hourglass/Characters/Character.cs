@@ -23,16 +23,29 @@ namespace Hourglass.Characters
         private SpriteRenderer sr;
         protected int activeSlot = -1;
         public Manager manager;
-
+        private Collider2D collider2d;
         private bool invulnerable = false;
+
+        public GameObject projectileOutput;
+
 
         private float flicker = 0;
 
-        protected void Awake()
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (GameManager.IsCharacter(collision.gameObject))
+            {
+                Debug.Log("Collision with character");
+                Physics2D.IgnoreCollision(collision.collider, collider2d);
+            }
+        }
+
+            protected void Awake()
         {
             sand = initialSand;
             controller = GetComponent<CharacterController>();
             sr = GetComponent<SpriteRenderer>();
+            collider2d = GetComponent<Collider2D>();
             manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
 
         }

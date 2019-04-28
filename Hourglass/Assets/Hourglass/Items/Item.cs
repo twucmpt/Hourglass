@@ -14,7 +14,7 @@ namespace Hourglass.Items
 
         private readonly int itemId;
 
-        private float cdtimer;
+        protected float cdtimer;
     
         public Item(int id, Character c) {
             itemId = id;

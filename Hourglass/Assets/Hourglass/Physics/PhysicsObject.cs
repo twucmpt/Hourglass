@@ -15,6 +15,7 @@ namespace Hourglass.Physics
         public float horizontalModifier = 1f;
 
         public bool ragdoll = false;
+        public bool useNormals = true;
 
         protected Vector2 targetVelocity;
         protected bool grounded;
@@ -66,6 +67,9 @@ namespace Hourglass.Physics
             Vector2 deltaPosition = velocity * Time.deltaTime;
 
             Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+
+            if (!useNormals)
+                moveAlongGround = new Vector2(1, 0);
 
             Vector2 move = moveAlongGround * deltaPosition.x * horizontalModifier;
 

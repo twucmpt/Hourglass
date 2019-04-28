@@ -12,8 +12,9 @@ namespace Hourglass.Characters
         public float maxLandSpeed = 7;
         public float maxAirSpeed = 3;
         public float jumpTakeOffSpeed = 7;
-        public bool facingRight = true;
+        public bool spriteFacingRight = true;
         public float flipSensitivity = 0.01f;
+        public bool facingRight = true;
 
         private float move;
         private int flipDelay = 20;
@@ -56,11 +57,27 @@ namespace Hourglass.Characters
             {
                 if (move.x > flipSensitivity)
                 {
-                    spriteRenderer.flipX = !facingRight;
+                    if (spriteFacingRight)
+                    {
+                        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+                    }
+                    facingRight = true;
                 }
                 else if (move.x < -flipSensitivity)
                 {
-                    spriteRenderer.flipX = facingRight;
+                    if (spriteFacingRight)
+                    {
+                        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y, transform.localScale.z);
+                    }
+                    else
+                    {
+                        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                    }
+                    facingRight = false;
                 }
             }
             if(flipvalue != spriteRenderer.flipX)

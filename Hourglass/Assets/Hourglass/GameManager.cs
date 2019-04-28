@@ -1,4 +1,5 @@
-﻿using Hourglass.Scenes;
+﻿using Hourglass.Characters;
+using Hourglass.Scenes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,26 @@ namespace Hourglass
             {
                 Debug.Log("Game Complete. You Win.");
             }
+        }
+
+        public static bool IsCharacter(GameObject t)
+        {
+            try
+            {
+                t.GetComponent<Character>().ToString();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public static void LookAt(Transform obj, Vector3 loc)
+        {
+            Vector3 dir = loc - obj.position;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            obj.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 

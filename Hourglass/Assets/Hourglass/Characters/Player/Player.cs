@@ -70,7 +70,7 @@ namespace Hourglass.Characters
             items.Add(newItem);
 
             while (items.Count > boundKeys.Length)
-                items.RemoveAt(boundKeys.Length);
+                items.RemoveAt(0);
         }
 
         private void UseItem(bool primary)

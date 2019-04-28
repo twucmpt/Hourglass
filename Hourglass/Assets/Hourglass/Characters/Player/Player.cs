@@ -17,7 +17,6 @@ namespace Hourglass.Characters
 
         public int itemLimit = 5;
         public string[] boundKeys = { "1", "2", "3", "4", "5" };
-        private int selectedItem = 0;
         private int activeSlot = -1;
 
         protected new void Awake()
@@ -35,16 +34,20 @@ namespace Hourglass.Characters
         protected new void Update()
         {
             base.Update();
-            foreach (Item i in items)
-                i.Update();
+            for (int i = 0; i < itemLimit; i++)
+            {
+                try
+                {
+                    items[i].Update();
+                }
+                catch(ArgumentOutOfRangeException)
+                {
 
-            SelectItem();
-            if (Input.GetMouseButtonDown(0))
-                UseItem(true);
-            if (Input.GetMouseButtonDown(1))
-                UseItem(false);
+                }
+            }
+            manager.uiManager.quickslot.UpdateSlots();
 
-            for(int i = 0; i < boundKeys.Length; i++)
+            for (int i = 0; i < boundKeys.Length; i++)
             {
                 if (Input.GetKeyDown(boundKeys[i]))
                 {
@@ -56,17 +59,11 @@ namespace Hourglass.Characters
                 }
             }
 
-        }
+            if (Input.GetMouseButtonDown(0))
+                UseItem(true);
+            if (Input.GetMouseButtonDown(1))
+                UseItem(false);
 
-
-        private void SelectItem()
-        {
-            for (int i = 0; i < items.Count && i < boundKeys.Length; i++)
-                if (Input.GetKey(boundKeys[i]))
-                {
-                    selectedItem = i;
-                    return;
-                }
         }
 
         public void GetItem(Item newItem)
@@ -79,7 +76,7 @@ namespace Hourglass.Characters
 
         private void UseItem(bool primary)
         {
-            Item selected = items[selectedItem];
+            Item selected = items[activeSlot];
             if (selected == null)
                 return;
 

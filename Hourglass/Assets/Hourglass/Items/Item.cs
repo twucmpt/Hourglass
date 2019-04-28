@@ -15,9 +15,9 @@ namespace Hourglass.Items
         private readonly int itemId;
         private readonly Sprite sprite;
         private readonly float price;
-        private readonly float cooldown;
+        public readonly float cooldown;
 
-        private double cdtimer;
+        private float cdtimer;
     
         public Item(int id, Character c) {
             itemId = id;
@@ -40,7 +40,7 @@ namespace Hourglass.Items
             cdtimer = cooldown;
         }
 
-        protected double Cooldown()
+        public float Cooldown()
         {
             return cdtimer;
         }

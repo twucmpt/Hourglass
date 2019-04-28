@@ -19,6 +19,9 @@ namespace Hourglass.UI
         private String key;
         private int id;
         private Item item;
+        private Image image;
+        private float minTransparency = 0.3f;
+        private float maxTransparency = 0.7f;
 
         public void Setup(Character character, int id, String key)
         {
@@ -32,6 +35,7 @@ namespace Hourglass.UI
         {
             active = Resources.Load<Sprite>("Images/UI/png/quickslot_selected");
             inactive = Resources.Load<Sprite>("Images/UI/png/quickslot");
+            image = transform.Find("Item").GetComponent<Image>();
             UpdateSlot();
         }
 
@@ -45,12 +49,12 @@ namespace Hourglass.UI
         {
             if(item == null)
             {
-                transform.Find("Item").GetComponent<Image>().enabled = false;
+                image.enabled = false;
             }
             else
             {
-                transform.Find("Item").GetComponent<Image>().sprite = item.GetSprite();
-                transform.Find("Item").GetComponent<Image>().enabled = true;
+                image.sprite = item.GetSprite();
+                image.enabled = true;
             }
         }
 
@@ -70,8 +74,23 @@ namespace Hourglass.UI
             try
             {
                 item = character.GetItem(id);
+                if(item.Cooldown() > 0)
+                {
+                    float cooldownPercent = (item.cooldown - item.Cooldown()) / (item.cooldown);
+                    cooldownPercent = (maxTransparency - minTransparency) * cooldownPercent + minTransparency;
+
+                    var tempColor = image.color;
+                    tempColor.a = cooldownPercent;
+                    image.color = tempColor;
+                }
+                else
+                {
+                    var tempColor = image.color;
+                    tempColor.a = 1;
+                    image.color = tempColor;
+                }
             }
-            catch(ArgumentOutOfRangeException e)
+            catch(ArgumentOutOfRangeException)
             {
                 item = null;
             }

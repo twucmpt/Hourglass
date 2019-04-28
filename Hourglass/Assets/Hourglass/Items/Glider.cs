@@ -22,11 +22,13 @@ namespace Hourglass.Items
         {
             horiztonalModified = true;
             character.controller.horizontalModifier = character.controller.horizontalModifier * horizontalModifier;
+            character.controller.useNormals = false;
         }
         private void RevertHorizontal()
         {
             horiztonalModified = false;
             character.controller.horizontalModifier = character.controller.horizontalModifier / horizontalModifier;
+            character.controller.useNormals = true;
         }
 
         public override void OnEquip() {
@@ -42,6 +44,18 @@ namespace Hourglass.Items
             else if(!character.IsGrounded() && !horiztonalModified)
             {
                 ActivateHorizontal();
+            }
+
+            if(horiztonalModified)
+            {
+                if (character.controller.facingRight)
+                {
+                    character.controller.MoveOverride(1);
+                }
+                else
+                {
+                    character.controller.MoveOverride(-1);
+                }
             }
         }
         public override void OnDequip()

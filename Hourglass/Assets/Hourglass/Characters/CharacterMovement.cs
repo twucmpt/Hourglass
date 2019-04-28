@@ -17,6 +17,8 @@ namespace Hourglass.Characters
         public bool facingRight = true;
 
         private float move;
+        private float moveOverrideValue;
+        private bool moveOverride = false;
         private int flipDelay = 20;
         private int flipDelayCount = 0;
 
@@ -85,6 +87,12 @@ namespace Hourglass.Characters
                 flipDelayCount = flipDelay;
             }
 
+            if (moveOverride)
+            {
+                move.x = moveOverrideValue;
+                moveOverride = false;
+            }
+
             animator.SetBool("Grounded", grounded);
             animator.SetFloat("Speed", Mathf.Abs(velocity.x) / maxSpeed);
 
@@ -112,6 +120,12 @@ namespace Hourglass.Characters
         {
             targetVelocity = v;
             velocity = v;
+        }
+
+        public void MoveOverride(float value)
+        {
+            moveOverride = true;
+            moveOverrideValue = value;
         }
 
         public Vector2 GetVelocity()

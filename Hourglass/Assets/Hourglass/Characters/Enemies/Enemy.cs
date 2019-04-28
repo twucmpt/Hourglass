@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace Hourglass.Characters
 {
-    public class Enemy : Character
+    public class Enemy : NPC
     {
-        private Character target;
-
-        public void Target(Character t)
+        protected new void Start()
         {
-            target = t;
+            base.Start();
+            Target(manager.player);
         }
     }
 }

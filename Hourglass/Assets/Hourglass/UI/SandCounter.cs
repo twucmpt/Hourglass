@@ -14,7 +14,7 @@ namespace Hourglass.UI
 
         void Awake()
         {
-            character = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            character = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().player;
             text = GetComponent<UnityEngine.UI.Text>();
         }
 

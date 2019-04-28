@@ -15,7 +15,7 @@ namespace Hourglass.UI
 
         void Awake()
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            player = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().player;
 
             slots = new GameObject[player.boundKeys.Length];
             for (int i = 0; i < slots.Length; i++)

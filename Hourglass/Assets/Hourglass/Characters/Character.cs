@@ -30,12 +30,17 @@ namespace Hourglass.Characters
             {
                 if (timer)
                 {
-                    ReduceTime();
-                    if (sand <= 0)
-                    {
-                        Die();
-                    }
+                    CountDown();
                 }
+            }
+        }
+
+        protected virtual void CountDown()
+        {
+            ReduceTime();
+            if (sand <= 0)
+            {
+                Die();
             }
         }
 

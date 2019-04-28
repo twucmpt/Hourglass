@@ -1,4 +1,5 @@
 ﻿using Hourglass.Physics;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,10 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     Rigidbody2D rb;
-    List<Collider2D> holding = new List<Collider2D>();
+    List<(Collider2D collider, int dropTime)> holding = new List<(Collider2D collider, int dropTime)>();
     Collider2D collider2d;
+    public int dropTime = 5;
+    
 
 
     void Start()
@@ -19,24 +22,38 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        List<Collider2D> tempholding = new List<Collider2D>(holding);
-        foreach (Collider2D passenger in tempholding)
+        List<(Collider2D collider, int dropTime)> tempholding = new List<(Collider2D collider, int dropTime)>(holding);
+        for(int i = 0; i < tempholding.Count; i++)
         {
-            if (passenger.IsTouching(collider2d))
+            if (rb == null)
             {
-                //passenger.transform.position = new Vector3(passenger.transform.position.x, transform.position.y+2, passenger.transform.position.z);
-                if (rb == null)
-                {
-                    passenger.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
-                }
-                else
-                {
-                    passenger.GetComponent<Rigidbody2D>().velocity = rb.velocity;
-                }
+                tempholding[i].collider.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             }
             else
             {
-                holding.Remove(passenger);
+                tempholding[i].collider.GetComponent<Rigidbody2D>().velocity = rb.velocity;
+            }
+
+            if (tempholding[i].collider.IsTouching(collider2d))
+            {
+                tempholding[i] = (tempholding[i].collider, dropTime);
+            }
+            else
+            {
+                tempholding[i] = (tempholding[i].collider, tempholding[i].dropTime - 1);
+                for (int j = 0; j < holding.Count; j++)
+                {
+                    if (holding[j].collider== tempholding[i].collider)
+                    {
+                        holding[j] = tempholding[i];
+                        break;
+                    }
+                }
+                if (tempholding[i].dropTime == 0)
+                {
+                    tempholding[i].collider.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+                    holding.Remove(tempholding[i]);
+                }
             }
         }
     }
@@ -57,11 +74,11 @@ public class Platform : MonoBehaviour
         {
             if ((other.transform.position.y - transform.position.y) > 0)
             {
-                foreach (Collider2D passenger in holding)
+                foreach ((Collider2D collider, int dropTime) passenger in holding)
                 {
-                    if (passenger == other) return;
+                    if (passenger.collider == other) return;
                 }
-                holding.Add(other);
+                holding.Add((other,dropTime));
                 other.GetComponent<Rigidbody2D>().velocity = rb.velocity;
             }
         }

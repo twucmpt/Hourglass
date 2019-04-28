@@ -81,6 +81,12 @@ public class Platform : MonoBehaviour
                 holding.Add((other,dropTime));
                 other.GetComponent<Rigidbody2D>().velocity = rb.velocity;
             }
+            else
+            {
+                //If player gets pulled up by platform when underneath it, increase this slightly to fix it
+                float multiplier = 0.05f;
+                other.transform.position = other.transform.position - new Vector3(0, Mathf.Abs(rb.velocity.y)*multiplier, 0);
+            }
         }
     }
 }

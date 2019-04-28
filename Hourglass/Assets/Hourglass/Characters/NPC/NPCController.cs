@@ -191,7 +191,6 @@ namespace Hourglass.Characters
                 //Poor attempt to follow target on floating platforms
                 if((targetLoc.y - 0.5f) > transform.position.y)
                 {
-                    previousJumpPos = transform.position;
                     TryJump();
                 }
 

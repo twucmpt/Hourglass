@@ -22,6 +22,8 @@ namespace Hourglass.Characters
         protected List<Item> items = new List<Item>();
         private SpriteRenderer sr;
 
+        private bool invulnerable = false;
+
         private float flicker = 0;
 
         protected void Awake()
@@ -87,7 +89,7 @@ namespace Hourglass.Characters
 
         public void Damage(int damage)
         {
-            if (flicker == 0)
+            if (!invulnerable)
             {
                 RemoveSand(damage);
                 DamageResponse();
@@ -106,6 +108,7 @@ namespace Hourglass.Characters
 
         private void Flicker()
         {
+            invulnerable = true;
             flicker -= Time.deltaTime;
             sr.enabled = !sr.enabled;
 
@@ -113,10 +116,12 @@ namespace Hourglass.Characters
             {
                 sr.enabled = true;
                 flicker = 0;
+                invulnerable = false;
             }
             if(flicker == 0)
             {
                 sr.enabled = true;
+                invulnerable = false;
             }
         }
 
@@ -162,7 +167,7 @@ namespace Hourglass.Characters
 
         private void KnockBack(int baseDamage, Vector3 position)
         {
-            if (flicker == 0)
+            if (!invulnerable)
             {
                 controller.ragdoll = true;
 

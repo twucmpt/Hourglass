@@ -76,14 +76,22 @@ namespace Hourglass.Characters
 
         private void UseItem(bool primary)
         {
-            Item selected = items[activeSlot];
-            if (selected == null)
-                return;
+            try
+            {
+                Item selected = items[activeSlot];
+                if (selected == null)
+                    return;
 
-            if (primary)
-                selected.UsePrimary();
-            else
-                selected.UseSecondary();
+                if (primary)
+                    selected.UsePrimary();
+                else
+                    selected.UseSecondary();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+
+            }
+
         }
     }
 }

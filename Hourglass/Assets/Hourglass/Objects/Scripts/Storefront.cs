@@ -11,6 +11,7 @@ namespace Assets.Hourglass.Objects.Scripts
     class Storefront : MonoBehaviour
     {
         public GameObject storeItem;
+        public float spacing = 10;
         GameObject[] storeItems;
 
         ItemList.ItemProperties[] availableItems = new ItemList.ItemProperties[5];
@@ -45,6 +46,7 @@ namespace Assets.Hourglass.Objects.Scripts
             for(int i = 0; i < availableItems.Length; i++)
             {
                 GameObject itemdisplay = Instantiate(storeItem, transform);
+                itemdisplay.transform.position += new Vector3(spacing * i, 0, 0);
                 if (availableItems[i] != null)
                 {
                     itemdisplay.GetComponent<StoreDisplay>().Setup(availableItems[i]);

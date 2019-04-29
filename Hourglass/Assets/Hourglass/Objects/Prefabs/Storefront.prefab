@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storeItem: {fileID: 1910230083727435978, guid: a7c132b6a8862a84b85b3cf6f1228d04,
     type: 3}
+  spacing: 2

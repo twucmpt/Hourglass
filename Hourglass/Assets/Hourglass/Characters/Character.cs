@@ -258,8 +258,6 @@ namespace Hourglass.Characters
                 float vertical = 4;
                 float horizontal = 12;
 
-
-
                 Vector3 knockbackDirection = Vector3.Normalize(new Vector3(transform.position.x - position.x, transform.position.y - position.y, 0));
 
                 Vector3 knockback = Vector3.Normalize(new Vector3(knockbackDirection.x, 0, 0));

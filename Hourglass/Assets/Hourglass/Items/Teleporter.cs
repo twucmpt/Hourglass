@@ -11,10 +11,7 @@ namespace Hourglass.Items
 {
     class Teleporter : Item
     {
-        new public static double Price = 25.5;
-        new protected static double cooldown = 14;
-
-        public Teleporter(Player user) : base(0, user) { }
+        public Teleporter(Player user) : base(1, user) { }
 
         public override void UsePrimary()
         {

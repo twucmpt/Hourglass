@@ -75,8 +75,5 @@ namespace Hourglass.Characters
             while (items.Count > boundKeys.Length)
                 items.RemoveAt(0);
         }
-
-
-        
     }
 }

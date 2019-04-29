@@ -24,7 +24,7 @@ namespace Assets.Hourglass.Objects.Scripts
         {
             itemProps = iP;
             GetComponent<SpriteRenderer>().sprite = itemProps.sprite;
-            transform.GetChild(0).GetComponent<TextMesh>().text = itemProps.name + "\n" + itemProps.price;
+            transform.GetChild(0).GetComponent<TextMesh>().text = itemProps.name + "\n" + itemProps.price;            
         }
 
         public void BuyItem()

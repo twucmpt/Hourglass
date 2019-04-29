@@ -8,6 +8,7 @@ TagManager:
   - Exit
   - Manager
   - Enemy
+  - StoreItem
   layers:
   - Default
   - TransparentFX

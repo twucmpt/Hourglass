@@ -28,10 +28,10 @@ public class ItemList : MonoBehaviour
     public readonly static ItemProperties[] items = new ItemProperties[] {
         //                     Name        Price  Cooldown               Sprite                
          new ItemProperties("DebugTool",    0,      0,  "Images/Items/Default/png/DefaultItem")
-        ,new ItemProperties("Teleporter",   25.5f,  14, "Images/Items/Default/png/DefaultItem")
-        ,new ItemProperties("Glider",       10,     3,  "Images/Items/Default/png/DefaultItem")
-        ,new ItemProperties("Pistol",       20f,    1,  "Images/Items/Default/png/DefaultItem")
-        ,new ItemProperties("GrappleHook",  20f,    6,  "Images/Items/Default/png/DefaultItem")
+        ,new ItemProperties("Teleporter",   25.5f,  14, "Images/Items/Teleporter/png/Teleport")
+        ,new ItemProperties("Glider",       10,     3,  "Images/Items/Glider/png/Glider")
+        ,new ItemProperties("Pistol",       20f,    1,  "Images/Items/Pistol/png/Pistol")   
+        ,new ItemProperties("GrappleHook",  20f,    6,  "Images/Items/GrapplingHook/png/tempGrapplingHook")
 
     };
 

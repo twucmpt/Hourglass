@@ -75,16 +75,5 @@ namespace Hourglass.Characters
             while (items.Count > boundKeys.Length)
                 items.RemoveAt(0);
         }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            // stop grappling
-            
-            foreach (GrappleHookProjectile ghp in FindObjectsOfType<GrappleHookProjectile>())
-            {
-                if(IsGrounded())
-                    Destroy(ghp);
-            }
-        }
     }
 }

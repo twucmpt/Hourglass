@@ -91,12 +91,12 @@ namespace Hourglass.Characters
             sand = 0;
         }
 
-        public void AddSand(int amount)
+        public void AddSand(float amount)
         {
             sand += amount;
         }
 
-        public void RemoveSand(int amount)
+        public void RemoveSand(float amount)
         {
             sand -= amount;
         }

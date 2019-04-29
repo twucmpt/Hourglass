@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1423956550432079502}
   - component: {fileID: 1910230083727435972}
   - component: {fileID: -4457625885727818109}
-  m_Layer: 0
+  - component: {fileID: 7635459135357862348}
+  m_Layer: 5
   m_Name: StoreDisplay
   m_TagString: StoreItem
   m_Icon: {fileID: 0}
@@ -98,6 +99,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0787c5e370f34854da5ac755acfd02ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &7635459135357862348
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910230083727435978}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.125}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.25}
+  m_EdgeRadius: 0
 --- !u!1 &3182949042795042532
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +136,7 @@ GameObject:
   - component: {fileID: 356431370195883049}
   - component: {fileID: 4769095381939000232}
   - component: {fileID: 2936647298141498438}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +212,7 @@ TextMesh:
   m_CharacterSize: 0.02
   m_LineSpacing: 1
   m_Anchor: 1
-  m_Alignment: 0
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
   m_FontStyle: 0

@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using Hourglass.Characters;
+using Hourglass.Items;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +34,12 @@ public class ItemList : MonoBehaviour
         ,new ItemProperties("GrappleHook",  20f,    6,  "Images/Items/Default/png/DefaultItem")
 
     };
+
+    public static Item GetNewItem(ItemProperties itemProperties, Character c)
+    {
+        Type t = Type.GetType("Hourglass.Items."+itemProperties.name);
+        return (Item)Activator.CreateInstance(t, new object[] {c});
+    }
 
 
 }

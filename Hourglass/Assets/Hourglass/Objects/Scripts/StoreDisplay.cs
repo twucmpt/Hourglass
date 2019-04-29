@@ -19,8 +19,8 @@ namespace Assets.Hourglass.Objects.Scripts
         public void Setup(ItemList.ItemProperties iP)
         {
             itemProps = iP;
-            GetComponent<Image>().sprite = itemProps.sprite;
-            GetComponent<TextMesh>().text = itemProps.name + "\n" + itemProps.price;
+            GetComponent<SpriteRenderer>().sprite = itemProps.sprite;
+            transform.GetChild(0).GetComponent<TextMesh>().text = itemProps.name + "\n" + itemProps.price;
         }
     }
 }

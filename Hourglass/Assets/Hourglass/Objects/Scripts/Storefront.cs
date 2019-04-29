@@ -22,20 +22,27 @@ namespace Assets.Hourglass.Objects.Scripts
 
         public void Setup(ItemList.ItemProperties[] itemsprops)
         {
-            if (itemsprops.Length == 0)
+            
+            if (itemsprops.Length > availableItems.Length)
             {
+                List<ItemList.ItemProperties> remainingItems = new List<ItemList.ItemProperties>(itemsprops);
                 System.Random r = new System.Random();
                 for (int i = 0; i < availableItems.Length; i++)
                 {
-                    availableItems[i] = ItemList.items[r.Next(ItemList.items.Length)];
+                    availableItems[i] = remainingItems[r.Next(remainingItems.Count)];
                 }
             }
             else
-                availableItems = itemsprops;
+            {
+                for(int i = 0; i < itemsprops.Length; i++)
+                {
+                    availableItems[i] = itemsprops[i];
+                }
+            }
 
             storeItems = new GameObject[availableItems.Length];
 
-            for(int i = 0; i < transform.childCount; i++)
+            for(int i = 0; i < availableItems.Length; i++)
             {
                 GameObject itemdisplay = Instantiate(storeItem, transform);
                 if (availableItems[i] != null)

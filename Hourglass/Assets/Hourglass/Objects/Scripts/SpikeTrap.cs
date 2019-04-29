@@ -5,24 +5,12 @@ using Hourglass.Characters;
 
 public class SpikeTrap : MonoBehaviour
 {
-    double timeUp = 0;
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player" || other.gameObject.tag == "Enemy")
         {
-            Character victim = collision.gameObject.GetComponent<Character>();
+            Character victim = other.gameObject.GetComponent<Character>();
+            victim.KnockBack(0, transform.position);
             victim.Damage(25);
         }
     }

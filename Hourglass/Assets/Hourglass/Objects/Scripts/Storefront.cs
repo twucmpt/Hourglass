@@ -18,7 +18,6 @@ namespace Assets.Hourglass.Objects.Scripts
 
         public void Awake()
         {
-            Setup(ItemList.items);
         }
 
         public void Setup(ItemList.ItemProperties[] itemsprops)

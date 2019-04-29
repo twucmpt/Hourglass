@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Hourglass;
+using Hourglass.Characters;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -15,15 +17,16 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void ShowCredits()
-    {
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        try
+        {
+            Player player = (Player)FindObjectsOfType(typeof(Player))[0];
+            TextMeshProUGUI[] tms = GetComponentsInChildren<TextMeshProUGUI>();
+            tms[2].SetText("Sand Remaining: " + player.GetSand() + " Seconds");
+        }
+        catch { }
     }
 
     // Update is called once per frame

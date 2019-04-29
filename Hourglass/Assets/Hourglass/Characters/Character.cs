@@ -25,9 +25,10 @@ namespace Hourglass.Characters
         public Manager manager;
         private Collider2D collider2d;
         private bool invulnerable = false;
+        private AudioSource audioEmitter;
+        private AudioClip sEffect;
 
         public GameObject projectileOutput;
-
 
         private float flicker = 0;
 
@@ -47,7 +48,7 @@ namespace Hourglass.Characters
             sr = GetComponent<SpriteRenderer>();
             collider2d = GetComponent<Collider2D>();
             manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
-
+            audioEmitter = GetComponent<AudioSource>();
         }
 
         protected void Update()
@@ -168,7 +169,9 @@ namespace Hourglass.Characters
                     return;
 
                 if (primary)
+                {
                     selected.UsePrimary();
+                }
                 else
                     selected.UseSecondary();
             }
@@ -257,7 +260,7 @@ namespace Hourglass.Characters
             }
         }
 
-        private void KnockBack(int baseDamage, Vector3 position)
+        public void KnockBack(int baseDamage, Vector3 position)
         {
             if (!invulnerable)
             {

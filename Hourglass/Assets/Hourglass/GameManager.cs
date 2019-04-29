@@ -11,9 +11,11 @@ namespace Hourglass
     {
         private static string[] levelOrder = new string[]
         {
-        "StartScene",
-        "Level1",
-        "Shop1"
+        "Level1"
+        ,"Shop1"
+        ,"Level2"
+        ,"Level3"
+        ,"EndGame"
         };
         private static int currentLevel = -1;
 
@@ -28,6 +30,8 @@ namespace Hourglass
             else
             {
                 Debug.Log("Game Complete. You Win.");
+                Reset();
+                UnityEngine.Object.Destroy(GameObject.FindGameObjectWithTag("Player"));
             }
         }
 
@@ -49,6 +53,13 @@ namespace Hourglass
             Vector3 dir = loc - obj.position;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             obj.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+
+        public static void Reset()
+        {
+            currentLevel = -1;
+            SceneManager.LoadScene("StartMenu");
         }
     }
 

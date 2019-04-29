@@ -9,9 +9,9 @@ namespace Hourglass
 {
     public class GameManager
     {
-
         private static string[] levelOrder = new string[]
         {
+        "StartScene",
         "Level1",
         "Shop1"
         };

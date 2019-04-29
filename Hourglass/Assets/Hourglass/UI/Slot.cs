@@ -33,8 +33,8 @@ namespace Hourglass.UI
 
         void Start()
         {
-            active = Resources.Load<Sprite>("Images/UI/png/quickslot_selected");
-            inactive = Resources.Load<Sprite>("Images/UI/png/quickslot");
+            active = Resources.Load<Sprite>("Images/UI/Quickslot/png/quickslot_selected");
+            inactive = Resources.Load<Sprite>("Images/UI/Quickslot/png/quickslot");
             image = transform.Find("Item").GetComponent<Image>();
             UpdateSlot();
         }

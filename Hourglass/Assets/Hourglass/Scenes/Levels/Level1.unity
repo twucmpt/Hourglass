@@ -1782,6 +1782,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3209348614822781616, guid: 62b46ca0957554c44b967459301ffe6e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e308030b77aa0e84a85d90bb1fd4d710,
+        type: 3}
+    - target: {fileID: 3209348614822781623, guid: 62b46ca0957554c44b967459301ffe6e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b3c2ba9dbd9cfe342937c1693ecbc160, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b46ca0957554c44b967459301ffe6e, type: 3}
 --- !u!1001 &1436684596

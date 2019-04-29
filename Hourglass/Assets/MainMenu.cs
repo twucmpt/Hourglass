@@ -7,6 +7,9 @@ using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    public AudioClip victory;
+    public AudioClip defeat;
+
     public void PlayGame()
     {
         GameManager.NextLevel();
@@ -20,11 +23,16 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        try
+        try //if end game scene
         {
             Player player = (Player)FindObjectsOfType(typeof(Player))[0];
             TextMeshProUGUI[] tms = GetComponentsInChildren<TextMeshProUGUI>();
             tms[2].SetText("Sand Remaining: " + player.GetSand() + " Seconds");
+            AudioSource music = Camera.main.GetComponent<AudioSource>();
+
+            if (player.GetSand() > 0)
+                music.clip = victory;
+            else music.clip = defeat;
         }
         catch { }
     }

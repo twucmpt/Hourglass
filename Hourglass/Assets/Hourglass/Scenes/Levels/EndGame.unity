@@ -467,6 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c5369bc1497624d82560307dd794ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victory: {fileID: 8300000, guid: 6b93c9f442e6b5845878b83229d22e6f, type: 3}
+  defeat: {fileID: 8300000, guid: 4303ed214f71f794896f2aa0e2835641, type: 3}
 --- !u!1 &1056260205
 GameObject:
   m_ObjectHideFlags: 0

@@ -152,6 +152,11 @@ namespace Hourglass.Characters
                 activeSlot = idx;
                 ActivatePassive();
             }
+            else
+            {
+                RevertPassive();
+                activeSlot = -1;
+            }
         }
 
         protected void UseItem(bool primary)
@@ -189,7 +194,10 @@ namespace Hourglass.Characters
         {
             try
             {
-                items[activeSlot].OnDequip();
+                if (activeSlot >= 0)
+                {
+                    items[activeSlot].OnDequip();
+                }
             }
             catch (ArgumentOutOfRangeException)
             {

@@ -133,5 +133,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   direction: {x: 0, y: 0, z: 0}
-  speed: 1
-  grappleSpeed: 1
+  speed: 20
+  grappleSpeed: 7

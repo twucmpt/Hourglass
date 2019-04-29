@@ -71,7 +71,7 @@ namespace Hourglass.Physics
 
             if (tag == "Player")
             {
-                //Debug.Log(gravityModifier + " "+ velocity + " " + deltaPosition.x + " " + deltaPosition.y);
+                Debug.Log(gravityModifier + " "+ velocity + " " + deltaPosition.x + " " + deltaPosition.y);
             }
 
             Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);

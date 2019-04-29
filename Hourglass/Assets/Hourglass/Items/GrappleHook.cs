@@ -10,24 +10,32 @@ namespace Hourglass.Items
         ProjectileSource projSrc;
 
         public int damage = 10;
-        public float speed = 60;
+        public float speed = 20;
 
         public GrappleHook(Character user) : base(4, user) { }
 
         public override void UsePrimary()
         {
 
-            if (Cooldown() > 0) return;
 
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            if (character.controller.facingRight && worldPoint.x > projSrc.transform.position.x)
+            if (projSrc.projectiles.Count > 0)
             {
-                Shoot();
+                projSrc.RemoveAllProjectiles();
             }
-            else if (!character.controller.facingRight && worldPoint.x < projSrc.transform.position.x)
+            else
             {
-                Shoot();
+                if (Cooldown() > 0) return;
+
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                if (character.controller.facingRight && worldPoint.x > projSrc.transform.position.x)
+                {
+                    Shoot();
+                }
+                else if (!character.controller.facingRight && worldPoint.x < projSrc.transform.position.x)
+                {
+                    Shoot();
+                }
             }
 
         }
@@ -49,7 +57,12 @@ namespace Hourglass.Items
             projSrc.colliders = new Collider2D[] { character.GetComponent<Collider2D>() };
             projSrc.projectileObject = Resources.Load<GameObject>("Prefabs/GrappleHook/GrappleHook");
         }
-        public override void UsePassive() { }
+        public override void UsePassive() {
+            if (projSrc.projectiles.Count > 0)
+            {
+                StartCooldown();
+            }
+        }
         public override void OnDequip()
         {
             projSrc.Disable();

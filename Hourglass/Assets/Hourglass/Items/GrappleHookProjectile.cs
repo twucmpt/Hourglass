@@ -13,11 +13,11 @@ namespace Hourglass.Items
         private Transform t;
         private bool grapple = false;
         private bool pull = false;
-        public float grappleSpeed = 1;
+        public float grappleSpeed = 20;
 
         private Vector3[] previousPos = new Vector3[10];
 
-        private float gravMod = 0.5f;
+        private float gravMod = 0.1f;
 
         private void Update()
         {
@@ -44,7 +44,8 @@ namespace Hourglass.Items
             {
                 
                 Vector3 dir = Vector3.Normalize(new Vector3(target.position.x - center.position.x, target.position.y - center.position.y, 0));
-                t.GetComponent<Character>().SetVelocity(dir * grappleSpeed);
+                t.GetComponent<Character>().SetVelocity(new Vector2(dir.x,dir.y) * grappleSpeed);
+                Debug.Log(new Vector2(dir.x, dir.y) * grappleSpeed);
                 t.GetComponent<Character>().controller.ragdoll = true;
             }
             else
@@ -102,6 +103,9 @@ namespace Hourglass.Items
             {
                 t.GetComponent<Character>().controller.ragdoll = false;
                 t.GetComponent<Character>().controller.gravityModifier = t.GetComponent<Character>().controller.gravityModifier / gravMod;
+                grapple = false;
+                pull = false;
+                Destroy(gameObject);
             }
         }
     }

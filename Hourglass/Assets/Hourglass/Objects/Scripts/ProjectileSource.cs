@@ -11,7 +11,7 @@ public class ProjectileSource : MonoBehaviour
 
     public GameObject output;
     public Collider2D[] colliders;
-    private List<GameObject> projectiles = new List<GameObject>();
+    public List<GameObject> projectiles = new List<GameObject>();
 
     public void Shoot(Vector3 direction)
     {

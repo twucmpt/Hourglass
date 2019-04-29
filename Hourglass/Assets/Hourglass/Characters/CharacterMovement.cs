@@ -22,6 +22,9 @@ namespace Hourglass.Characters
         private int flipDelay = 20;
         private int flipDelayCount = 0;
 
+        private bool velocityOverride = false;
+
+
         private SpriteRenderer spriteRenderer;
         private Animator animator;
 
@@ -96,7 +99,15 @@ namespace Hourglass.Characters
             animator.SetBool("Grounded", grounded);
             animator.SetFloat("Speed", Mathf.Abs(velocity.x) / maxSpeed);
 
-            targetVelocity = move * maxSpeed;
+            if (!velocityOverride)
+            {
+                targetVelocity = move * maxSpeed;
+            }
+            else
+            {
+                velocityOverride = false;
+            }
+
         }
 
         // Functions for Character Controller
@@ -108,7 +119,7 @@ namespace Hourglass.Characters
 
         protected void Jump()
         {
-            if (grounded)
+            if (grounded && !velocityOverride)
             {
                 velocity.y = jumpTakeOffSpeed;
             }
@@ -118,8 +129,12 @@ namespace Hourglass.Characters
 
         public void VelocityOverride(Vector2 v)
         {
-            targetVelocity = v;
-            velocity = v;
+            if (!velocityOverride)
+            {
+                velocityOverride = true;
+                targetVelocity = v;
+                velocity = v;
+            }
         }
 
         public void MoveOverride(float value)

@@ -24,10 +24,11 @@ namespace Hourglass.Characters
         protected void Start()
         {
             user = GetComponent<Player>();
+            /*
             items.Add(new Teleporter(user));
             items.Add(new Glider(user));
             items.Add(new Pistol(user));
-            items.Add(new GrappleHook(user));
+            items.Add(new GrappleHook(user));*/
 
         }
 

@@ -16,8 +16,9 @@ namespace Assets.Hourglass.Objects.Scripts
 
         ItemList.ItemProperties[] availableItems = new ItemList.ItemProperties[5];
 
-        public void Awake()
+        public void Start()
         {
+            Setup(ItemList.items);
         }
 
         public void Setup(ItemList.ItemProperties[] itemsprops)

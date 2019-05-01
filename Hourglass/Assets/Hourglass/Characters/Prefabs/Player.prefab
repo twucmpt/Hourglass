@@ -197,7 +197,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.46}
-  m_Size: {x: 0.8, y: 1.4}
+  m_Size: {x: 0.8, y: 2}
   m_Direction: 0
 --- !u!50 &3869061079915812618
 Rigidbody2D:
@@ -255,6 +255,7 @@ MonoBehaviour:
   initialSand: 600
   baseDamage: 10
   attackSpeed: 0.6
+  damagedClip: {fileID: 0}
   timer: 0
   manager: {fileID: 0}
   projectileOutput: {fileID: 4012105008348928975}

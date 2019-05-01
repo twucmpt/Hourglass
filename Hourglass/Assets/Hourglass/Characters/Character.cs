@@ -14,6 +14,7 @@ namespace Hourglass.Characters
         public int initialSand = 600;
         public int baseDamage = 10;
         public float attackSpeed = 0.6f;
+        public AudioClip damagedClip;
 
         private float attackCooldown = 0;
         private float sand = 0;
@@ -26,7 +27,6 @@ namespace Hourglass.Characters
         private Collider2D collider2d;
         private bool invulnerable = false;
         private AudioSource audioEmitter;
-        private AudioClip sEffect;
 
         public GameObject projectileOutput;
 
@@ -119,6 +119,7 @@ namespace Hourglass.Characters
         protected virtual void DamageResponse()
         {
             FlickerAnimation(0.8f);
+            audioEmitter.PlayOneShot(damagedClip);
         }
 
         private void FlickerAnimation(float time)

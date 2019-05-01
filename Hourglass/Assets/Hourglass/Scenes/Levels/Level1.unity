@@ -1843,6 +1843,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3209348615559248712, guid: 62b46ca0957554c44b967459301ffe6e,
+        type: 3}
+      propertyPath: damagedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ea0ad5e514d6644ab11b2a0e675f264, type: 3}
     m_RemovedComponents:
     - {fileID: 3209348615691188443, guid: 62b46ca0957554c44b967459301ffe6e, type: 3}
     - {fileID: 3209348614846420658, guid: 62b46ca0957554c44b967459301ffe6e, type: 3}

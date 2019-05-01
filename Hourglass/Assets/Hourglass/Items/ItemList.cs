@@ -31,7 +31,7 @@ public class ItemList : MonoBehaviour
         ,new ItemProperties("Teleporter",   25.5f,  14, "Images/Items/Teleporter/png/Teleport")
         ,new ItemProperties("Glider",       10,     3,  "Images/Items/Glider/png/Glider")
         ,new ItemProperties("Pistol",       20f,    1,  "Images/Items/Pistol/png/Pistol")   
-        ,new ItemProperties("GrappleHook",  20f,    6,  "Images/Items/GrapplingHook/png/tempGrapplingHook")
+        ,new ItemProperties("GrappleHook",  20f,    6,  "Images/Items/GrapplingHook/png/GrapplingHook")
 
     };
 
